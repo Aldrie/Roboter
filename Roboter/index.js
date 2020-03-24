@@ -1,5 +1,5 @@
 const robot = require('robotjs');
-const { read } = require('./file');
+const { read, edit } = require('./file');
 const { convert } = require('./converter');
 
 const runCommands = {
@@ -52,4 +52,14 @@ exports.run = (file) => {
       throw new Error(err);
     };
   })
+};
+
+exports.inspectMouse = (file, seconds) => {
+  setTimeout(() => {
+    const mousePos = robot.getMousePos();
+    const toSave = JSON.stringify(mousePos).replace(/{|}|"|:|x|y/g, '')
+    .replace(/,/g, ' ');
+
+    edit(file, `move ${toSave}`);
+  }, seconds * 1000);
 };
