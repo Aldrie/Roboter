@@ -1,0 +1,13 @@
+move 207 846
+click
+move 180 846
+type paint
+tap enter
+move 330 66
+click
+move 638 410
+click
+delay 2
+type Hello World
+move 695 320
+click
